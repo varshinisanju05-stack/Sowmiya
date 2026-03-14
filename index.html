@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Birthday Letter 💌</title>
+
+<style>
+
+body{
+margin:0;
+height:100vh;
+background:black;
+display:flex;
+justify-content:center;
+align-items:center;
+font-family:Arial;
+overflow:hidden;
+}
+
+/* Envelope */
+
+.envelope{
+width:300px;
+height:200px;
+background:red;
+border-radius:10px;
+position:relative;
+cursor:pointer;
+overflow:hidden;
+box-shadow:0 10px 30px rgba(0,0,0,0.7);
+}
+
+/* Letter */
+
+.letter{
+position:absolute;
+bottom:-330px;
+left:50%;
+transform:translateX(-50%);
+width:260px;
+height:380px;
+background:white;
+border-radius:10px;
+padding:15px;
+text-align:center;
+transition:0.6s;
+}
+
+.letter.show{
+bottom:10px;
+}
+
+h3{
+color:red;
+}
+
+p{
+font-size:13px;
+line-height:1.4;
+}
+
+/* Buttons */
+
+button{
+border:none;
+padding:8px 14px;
+margin:6px;
+border-radius:20px;
+cursor:pointer;
+}
+
+.accept{
+background:red;
+color:white;
+}
+
+.deny{
+background:#444;
+color:white;
+}
+
+/* Flash card */
+
+.flash{
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:red;
+color:white;
+padding:25px;
+border-radius:12px;
+font-weight:bold;
+display:none;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.7);
+}
+
+/* Flying emoji */
+
+.fly{
+position:fixed;
+font-size:25px;
+animation:float 3s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-100px);}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="envelope" onclick="openLetter()">
+
+<div class="letter" id="letter">
+
+<h3>HAPPIEST BIRTHDAY DAW PRAVEEN 🖤</h3>
+
+<p>
+Oiye Happiest b'day da my Love🖤 really I don't know how to express my love towards you...  
+My day doesn't start without your talks...  
+We fight each other but at the end we bounce back to each other....<br><br>
+
+For sure I will be at your worst and best!!! No matter what it's....<br><br>
+
+We created lotzzz of memories within 8 months and even I want this love to extend more than 8 years....<br><br>
+
+Happinest b'day Mah cutie pie  
+Luv you to the core  
+Umahhhhh 💋
+</p>
+
+<button class="accept" onclick="acceptLetter(event)">Accept</button>
+<button class="deny" onclick="denyLetter(event)">Deny</button>
+
+</div>
+
+</div>
+
+<div class="flash" id="flash"></div>
+
+<script>
+
+function openLetter(){
+document.getElementById("letter").classList.toggle("show");
+}
+
+function acceptLetter(e){
+e.stopPropagation();
+
+let flash=document.getElementById("flash");
+flash.style.display="block";
+flash.innerText="Your silk uhh is happy 🖤";
+
+flyEmoji("💋");
+flyEmoji("🖤");
+}
+
+function denyLetter(e){
+e.stopPropagation();
+
+let flash=document.getElementById("flash");
+flash.style.display="block";
+flash.innerText="Go nd accept the letter you don't have any option 😤👊🏻";
+
+flyEmoji("😤");
+flyEmoji("👊🏻");
+}
+
+function flyEmoji(symbol){
+
+for(let i=0;i<20;i++){
+
+let emoji=document.createElement("div");
+emoji.className="fly";
+emoji.innerText=symbol;
+
+emoji.style.left=Math.random()*100+"vw";
+emoji.style.animationDuration=(2+Math.random()*3)+"s";
+
+document.body.appendChild(emoji);
+
+setTimeout(()=>{
+emoji.remove();
+},4000);
+
+}
+
+}
+
+</script>
+
+</body>
+</html>
